@@ -413,7 +413,7 @@ if submit_button:
                 
                 # 合并特征并去除重复列
                 merged_features = merge_features_without_duplicates(rdkit_features, mordred_features)
-                data=merged_features.loc[:, ['nBondsD', 'SdssC', 'PEOE_VSA8', 'SMR_VSA3', 'n6HRing', 'SMR_VSA10']]
+                data=merged_features.loc[:, ['nBondsD', 'NumAliphaticHeterocycles', 'PEOE_VSA8', 'SdssC', "VSA_EState2", "SlogP_VSA10", "SMR_VSA3","SMR_VSA10"]]
 
                 # 创建输入数据表 - 使用新的特征
                 input_data = {
@@ -424,10 +424,12 @@ if submit_button:
                     "SA": [solvent_params["SA"]],
                     "SB": [solvent_params["SB"]],
                     'nBondsD': [data.iloc[0]['nBondsD']], 
-                    'SdssC': [data.iloc[0]['SdssC']], 
+                    'NumAliphaticHeterocycles': [data.iloc[0]['NumAliphaticHeterocycles']], 
                     'PEOE_VSA8': [data.iloc[0]['PEOE_VSA8']], 
-                    'SMR_VSA3': [data.iloc[0]['SMR_VSA3']], 
-                    'n6HRing': [data.iloc[0]['n6HRing']], 
+                    'SdssC': [data.iloc[0]['SdssC']], 
+                    'VSA_EState2': [data.iloc[0]['VSA_EState2']], 
+                    'SMR_VSA3': [data.iloc[0]['SMR_VSA3']],
+                    'SlogP_VSA10': [data.iloc[0]['SlogP_VSA10']],
                     'SMR_VSA10': [data.iloc[0]['SMR_VSA10']]
                 }
             
@@ -445,10 +447,12 @@ if submit_button:
                     "SA": [solvent_params["SA"]],
                     "SB": [solvent_params["SB"]],
                     'nBondsD': [data.iloc[0]['nBondsD']], 
-                    'SdssC': [data.iloc[0]['SdssC']], 
+                    'NumAliphaticHeterocycles': [data.iloc[0]['NumAliphaticHeterocycles']], 
                     'PEOE_VSA8': [data.iloc[0]['PEOE_VSA8']], 
-                    'SMR_VSA3': [data.iloc[0]['SMR_VSA3']], 
-                    'n6HRing': [data.iloc[0]['n6HRing']], 
+                    'SdssC': [data.iloc[0]['SdssC']], 
+                    'VSA_EState2': [data.iloc[0]['VSA_EState2']], 
+                    'SMR_VSA3': [data.iloc[0]['SMR_VSA3']],
+                    'SlogP_VSA10': [data.iloc[0]['SlogP_VSA10']],
                     'SMR_VSA10': [data.iloc[0]['SMR_VSA10']]
                 })
                 
@@ -458,10 +462,9 @@ if submit_button:
                     predictor = load_predictor()
                     
                     # 只使用最关键的模型进行预测，减少内存占用
-                    essential_models = ['CatBoost',
-                                         'LightGBM',
+                    essential_models = [ 'LightGBM',
                                          'LightGBMLarge',
-                                         'RandomForestMSE',
+                                         'NeuralNetTorch',
                                          'WeightedEnsemble_L2',
                                          'XGBoost']
                     predict_df_1 = pd.concat([predict_df,predict_df],axis=0)
