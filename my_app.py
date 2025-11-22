@@ -212,13 +212,13 @@ smiles = st.text_input("Enter the SMILES representation of the molecule:", place
 submit_button = st.button("Submit and Predict", key="predict_button")
 
 # 指定的描述符列表 - 已更新为所需的特征
-required_descriptors = ["nBondsD", "SdssC", "PEOE_VSA8", "SMR_VSA3", "n6HRing", "SMR_VSA10"]
+required_descriptors = ["nBondsD", "NumAliphaticHeterocycles", "PEOE_VSA8", "SdssC", "VSA_EState2", "SlogP_VSA10", "SMR_VSA3","SMR_VSA10"]
 
 # 缓存模型加载器以避免重复加载
 @st.cache_resource(show_spinner=False, max_entries=1)  # 限制只缓存一个实例
 def load_predictor():
     """缓存模型加载，避免重复加载导致内存溢出"""
-    return TabularPredictor.load("./ag-20250609_005753")
+    return TabularPredictor.load("./ag-20250620_005406")
 
 def mol_to_image(mol, size=(300, 300)):
     """将分子转换为背景颜色为 #f9f9f9f9 的SVG图像"""
