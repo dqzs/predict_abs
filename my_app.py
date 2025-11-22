@@ -100,7 +100,7 @@ st.markdown(
     <div class='rounded-container'>
         <h2>Predict Organic Fluorescence <br>Emission Wavelengths</h2>
         <blockquote>
-            1. This website aims to quickly predict the emission wavelength of organic molecules based on their structure (SMILES) and solvent using machine learning models.<br>
+            1. This website aims to quickly predict the absorption wavelength of organic molecules based on their structure (SMILES) and solvent using machine learning models.<br>
             2. Code and data are available at <a href='https://github.com/dqzs/Fluorescence-Emission-Wavelength-Prediction' target='_blank'>https://github.com/dqzs/Fluorescence-Emission-Wavelength-Prediction</a>.
         </blockquote>
     </div>
